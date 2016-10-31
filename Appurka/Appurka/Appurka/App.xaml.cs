@@ -13,7 +13,7 @@ namespace Appurka
         {
             InitializeComponent();
 
-            MainPage = new Appurka.MainPage();
+            MainPage = new Views.MainPage();
         }
 
         protected override void OnStart()
