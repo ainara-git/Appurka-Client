@@ -2,10 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Appurka"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Appurka.Views.MainPage">
 
-  <Label Text="Welcome to Xamarin Forms!"
-           VerticalOptions="Center"
-           HorizontalOptions="Center" />
+  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+    <Label Text="{Binding Title}" />
+  </StackLayout>
 
 </ContentPage>
