@@ -8,7 +8,7 @@ namespace Appurka.Services
     {
         public async Task<bool> LoginAsync(string email, string password)
         {
-            await Task.Run(() => {  });
+            await Task.Delay(1000);
             return true;
         }
     }

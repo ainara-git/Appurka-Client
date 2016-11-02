@@ -11,6 +11,7 @@
     <Entry Text="{Binding Email}"></Entry>
     <Label Text="Passsword" />
     <Entry Text="{Binding Password}"></Entry>
+    <Button Command="{Binding LoginCommand}" Text="Log in"></Button>
   </StackLayout>
   
 </ContentPage>
