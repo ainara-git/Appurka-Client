@@ -44,7 +44,7 @@ namespace Appurka.ViewModels
 
         public LoginPageViewModel(INavigationService navigationService, IAuthenticateService authenticateService)
         {
-            //_navigationService = navigationService;
+            _navigationService = navigationService;
             _authenticateService = authenticateService;
             LoginCommand = new DelegateCommand(Login);
         }
