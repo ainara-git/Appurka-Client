@@ -1,11 +1,13 @@
-﻿using Appurka.Views;
+﻿using Appurka.Services;
+using Appurka.Services.Interfaces;
+using Appurka.Views;
 using Prism.Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Xamarin.Forms;
+using Microsoft.Practices.Unity;
 
 namespace Appurka
 {
@@ -24,6 +26,8 @@ namespace Appurka
         {
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
+
+            Container.RegisterType<IAuthenticateService, AuthenticateService>();
         }
     }
 }
