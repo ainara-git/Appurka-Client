@@ -1,10 +1,8 @@
-﻿using Appurka.Services.Interfaces;
+﻿using Appurka.Models;
+using Appurka.Services.Interfaces;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Appurka.ViewModels
 {
@@ -39,6 +37,8 @@ namespace Appurka.ViewModels
 
         public DelegateCommand LoginCommand { get; set; }
 
+        public DelegateCommand FacebookCommand { get; set; }
+
 
         #endregion Commands
 
@@ -47,9 +47,17 @@ namespace Appurka.ViewModels
             _navigationService = navigationService;
             _authenticateService = authenticateService;
             LoginCommand = new DelegateCommand(Login);
+            FacebookCommand = new DelegateCommand(Facebook);
         }
 
-        async void Login()
+        async private void Facebook()
+        {
+            LoginOAuthPageViewModel.AuthInformation = AuthInformation.Facebook;
+
+            await _navigationService.NavigateAsync("LoginOAuthPage?provider=facebook");
+        }
+
+        async private void Login()
         {
             bool login = await _authenticateService.LoginAsync(Email, Password);
             if(login)

@@ -26,6 +26,7 @@ namespace Appurka
         {
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
+            Container.RegisterTypeForNavigation<LoginOAuthPage>();
 
             Container.RegisterType<IAuthenticateService, AuthenticateService>();
         }

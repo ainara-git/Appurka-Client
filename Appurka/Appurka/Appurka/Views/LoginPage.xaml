@@ -12,6 +12,7 @@
     <Label Text="Passsword" />
     <Entry Text="{Binding Password}"></Entry>
     <Button Command="{Binding LoginCommand}" Text="Log in"></Button>
+    <Button Command="{Binding FacebookCommand}" Text="Log in with Facebook"></Button>
   </StackLayout>
   
 </ContentPage>
