@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using Xamarin.Forms;
 using Microsoft.Practices.Unity;
+using Xamarin.Auth;
 
 namespace Appurka
 {
@@ -15,11 +16,12 @@ namespace Appurka
     {
         public App(IPlatformInitializer initializer = null) : base(initializer) { }
 
+
         protected override void OnInitialized()
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("LoginPage?title=Hello%20from%20Xamarin.Forms");
+            NavigationService.NavigateAsync("MainPage?title=Hello%20from%20Xamarin.Forms");
         }
 
         protected override void RegisterTypes()
@@ -29,6 +31,15 @@ namespace Appurka
             Container.RegisterTypeForNavigation<LoginOAuthPage>();
 
             Container.RegisterType<IAuthenticateService, AuthenticateService>();
+        }
+        public static bool IsLoggedIn
+        {
+            get
+            {
+                IEnumerable<Account> accounts = AccountStore.Create().FindAccountsForService("Facebook");
+
+                return accounts != null && accounts.Any();
+            }
         }
     }
 }

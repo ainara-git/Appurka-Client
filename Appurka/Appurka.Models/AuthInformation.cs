@@ -16,6 +16,7 @@ namespace Appurka.Models
         {
             Facebook = new Models.AuthInformation()
             {
+                Name = "Facebook",
                 ClientId = "195056067600094",
                 Scope = "email",
                 AuthorizeUrl = "https://m.facebook.com/dialog/oauth",
@@ -24,7 +25,7 @@ namespace Appurka.Models
             };
         }
 
-
+        public string Name { get; set; }
         public string ClientId { get; set; }
         public string Scope { get; set; }
         public string AuthorizeUrl { get; set; }

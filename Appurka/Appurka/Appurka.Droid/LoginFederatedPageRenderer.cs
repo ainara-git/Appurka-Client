@@ -36,6 +36,7 @@ namespace Authenticator.Droid
                     //App.AuthInformation.Token = eventArgs.Account.Properties["access_token"];
                     
                     viewModel.SuccessfulLoginCommand.Execute();
+                    AccountStore.Create().Save(eventArgs.Account, LoginOAuthPageViewModel.AuthInformation.Name);
                 }
                 else
                 {
