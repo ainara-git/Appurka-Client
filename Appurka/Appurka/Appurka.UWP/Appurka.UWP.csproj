@@ -128,6 +128,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Appurka.Models\Appurka.Models.csproj">
+      <Project>{5d507d47-6e5f-4fdd-8d0a-a63416c89604}</Project>
+      <Name>Appurka.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Appurka.Services\Appurka.Services.csproj">
+      <Project>{29c1c150-16e5-4474-9864-f0d02a80ec04}</Project>
+      <Name>Appurka.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Appurka\Appurka.csproj">
       <Project>{E089F371-1AF9-4C85-B733-662C83E20C89}</Project>
       <Name>Appurka</Name>

@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:Appurka"
              x:Class="Appurka.Views.MainPage">
 
-  <Label Text="Welcome to Xamarin Forms!"
+  <Label Text="Welcome to Xamarin Forms3!"
            VerticalOptions="Center"
            HorizontalOptions="Center" />
 
