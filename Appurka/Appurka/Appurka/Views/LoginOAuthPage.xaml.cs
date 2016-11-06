@@ -8,5 +8,15 @@ namespace Appurka.Views
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (App.Instance.IsLoggedIn)
+            {
+                Navigation.PopModalAsync();
+            }
+        }
     }
 }

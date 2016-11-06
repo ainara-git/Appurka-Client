@@ -1,4 +1,5 @@
-﻿using Appurka.Models;
+﻿using System;
+using Appurka.Models;
 using Appurka.Services.Interfaces;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -6,7 +7,7 @@ using Prism.Navigation;
 
 namespace Appurka.ViewModels
 {
-    public class LoginPageViewModel : BindableBase
+    public class LoginPageViewModel : BindableBase, INavigationAware
     {
         #region Members
 
@@ -63,6 +64,18 @@ namespace Appurka.ViewModels
             if(login)
             {
                 await _navigationService.NavigateAsync("MainPage?title=Hello%20from%20Xamarin.Forms");
+            }
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("logged") && parameters["logged"].Equals("true"))
+            {
+                _navigationService.GoBackAsync(new NavigationParameters("logged=true"));
             }
         }
     }

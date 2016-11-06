@@ -31,16 +31,13 @@ namespace Appurka.Droid.Views
             {
                 if (eventArgs.IsAuthenticated)
                 {
-                    // Use eventArgs.Account to do wonderful things
-                    //App.AuthInformation.Token = eventArgs.Account.Properties["access_token"];
-
                     App.Instance.Account = eventArgs.Account;
                     viewModel.SuccessfulLoginCommand.Execute();
                     AccountStore.Create().Save(eventArgs.Account, LoginOAuthPageViewModel.AuthInformation.Name);
                 }
                 else
                 {
-                    // The user cancelled
+                    viewModel.CancelLoginCommand.Execute();
                 }
             };
 
