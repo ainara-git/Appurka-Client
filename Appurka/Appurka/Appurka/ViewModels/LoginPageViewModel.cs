@@ -47,8 +47,20 @@ namespace Appurka.ViewModels
         {
             _navigationService = navigationService;
             _authenticateService = authenticateService;
-            LoginCommand = new DelegateCommand(Login);
+            LoginCommand = new DelegateCommand(Login).ObservesCanExecute((p) => !string.IsNullOrWhiteSpace(Email) && !string.IsNullOrWhiteSpace(Password));
             FacebookCommand = new DelegateCommand(Facebook);
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("logged") && parameters["logged"].Equals("true"))
+            {
+                _navigationService.GoBackAsync(new NavigationParameters("logged=true"));
+            }
         }
 
         async private void Facebook()
@@ -64,18 +76,6 @@ namespace Appurka.ViewModels
             if(login)
             {
                 await _navigationService.NavigateAsync("MainPage?title=Hello%20from%20Xamarin.Forms");
-            }
-        }
-
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            if (parameters.ContainsKey("logged") && parameters["logged"].Equals("true"))
-            {
-                _navigationService.GoBackAsync(new NavigationParameters("logged=true"));
             }
         }
     }
