@@ -9,17 +9,31 @@ using System.Text;
 using Xamarin.Forms;
 using Microsoft.Practices.Unity;
 using Xamarin.Auth;
+using Appurka.Models;
 
 namespace Appurka
 {
     public partial class App : PrismApplication
     {
-        public App(IPlatformInitializer initializer = null) : base(initializer) { }
+        public static App Instance { get { return Current as App; } }
 
+        public App(IPlatformInitializer initializer = null) : base(initializer) { }
+        
+        public Account Account { get; set; }
+
+        public bool IsLoggedIn
+        {
+            get
+            {
+                return Account != null;
+            }
+        }
 
         protected override void OnInitialized()
         {
             InitializeComponent();
+
+            LoadAccount();
 
             NavigationService.NavigateAsync("MainPage?title=Hello%20from%20Xamarin.Forms");
         }
@@ -30,16 +44,13 @@ namespace Appurka
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<LoginOAuthPage>();
 
-            Container.RegisterType<IAuthenticateService, AuthenticateService>();
+            Container.RegisterType<IAuthenticationService, AuthenticationService>();
         }
-        public static bool IsLoggedIn
-        {
-            get
-            {
-                IEnumerable<Account> accounts = AccountStore.Create().FindAccountsForService("Facebook");
 
-                return accounts != null && accounts.Any();
-            }
+        private void LoadAccount()
+        {
+            var authenticationStore = DependencyService.Get<IAuthenticationStore>();
+            Account = authenticationStore.Load(AuthInformation.FACEBOOK);
         }
     }
 }

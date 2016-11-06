@@ -18,7 +18,7 @@ namespace Appurka.Views
         {
             base.OnAppearing();
 
-            if (!App.IsLoggedIn)
+            if (!App.Instance.IsLoggedIn)
             {
                 Navigation.PushModalAsync(new LoginPage());
             }

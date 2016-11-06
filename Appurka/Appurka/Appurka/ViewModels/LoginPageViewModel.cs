@@ -11,7 +11,7 @@ namespace Appurka.ViewModels
         #region Members
 
         private INavigationService _navigationService;
-        private IAuthenticateService _authenticateService;
+        private IAuthenticationService _authenticateService;
 
         #endregion Members
 
@@ -42,7 +42,7 @@ namespace Appurka.ViewModels
 
         #endregion Commands
 
-        public LoginPageViewModel(INavigationService navigationService, IAuthenticateService authenticateService)
+        public LoginPageViewModel(INavigationService navigationService, IAuthenticationService authenticateService)
         {
             _navigationService = navigationService;
             _authenticateService = authenticateService;

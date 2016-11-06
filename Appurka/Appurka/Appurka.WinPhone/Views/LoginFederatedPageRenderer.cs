@@ -1,24 +1,19 @@
-using System;
-using Android.App;
-using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms;
-using Authenticator.Droid;
-using Xamarin.Auth;
-using Appurka.Views;
 using Appurka.ViewModels;
-using Appurka.Models;
+using Appurka.Views;
+using Appurka.WinPhone.Views;
+using System;
+using Xamarin.Auth;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.WinRT;
 
 [assembly: ExportRenderer(typeof(LoginOAuthPage), typeof(LoginOAutPageRenderer))]
-namespace Authenticator.Droid
+namespace Appurka.WinPhone.Views
 {
     public class LoginOAutPageRenderer : PageRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Page> e)
         {
             base.OnElementChanged(e);
-
-            // this is a ViewGroup - so should be able to load an AXML file and FindView<>
-            var activity = this.Context as Activity;
 
             var viewModel = (LoginOAuthPageViewModel)Element.BindingContext;
 
@@ -44,7 +39,7 @@ namespace Authenticator.Droid
                 }
             };
 
-            activity.StartActivity(auth.GetUI(activity));
+            var url = auth.GetInitialUrlAsync();
         }
     }
 }

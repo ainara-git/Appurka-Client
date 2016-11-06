@@ -4,7 +4,7 @@ using System;
 
 namespace Appurka.Services
 {
-    public class AuthenticateService : IAuthenticateService
+    public class AuthenticationService : IAuthenticationService
     {
         public async Task<bool> LoginAsync(string email, string password)
         {

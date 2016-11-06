@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Auth;
 
 namespace Appurka.Services.Interfaces
 {
-    public interface IAuthenticateService
+    public interface IAuthenticationStore
     {
-        Task<bool> LoginAsync(string email, string password);
+        Account Load(string serviceId);
     }
 }
