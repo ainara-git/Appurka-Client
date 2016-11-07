@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:Appurka"
              x:Class="Appurka.Views.MainPage">
 
-  <Label Text="Welcome to Xamarin Forms3!"
-           VerticalOptions="Center"
-           HorizontalOptions="Center" />
-
+  <StackLayout>
+    <Label Text="{Binding AppName}" VerticalOptions="Center" HorizontalOptions="Center" />
+    <Label Text="hardcoded" VerticalOptions="Center" HorizontalOptions="Center" />
+  </StackLayout>
 </ContentPage>

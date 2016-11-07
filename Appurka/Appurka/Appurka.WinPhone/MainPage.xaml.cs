@@ -28,7 +28,7 @@ namespace Appurka.WinPhone
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
-            LoadApplication(new Appurka.App());
+            //LoadApplication(new Appurka.App());
         }
 
         /// <summary>
