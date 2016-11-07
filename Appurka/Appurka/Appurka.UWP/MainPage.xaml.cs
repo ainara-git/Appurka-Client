@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+﻿using MvvmCross.Core.ViewModels;
+using MvvmCross.Core.Views;
+using MvvmCross.Forms.Presenter.WindowsUWP;
+using MvvmCross.Platform;
 
 namespace Appurka.UWP
 {
@@ -21,7 +11,12 @@ namespace Appurka.UWP
         {
             this.InitializeComponent();
 
-            LoadApplication(new Appurka.App());
+            var start = Mvx.Resolve<IMvxAppStart>();
+            start.Start();
+
+            var presenter = Mvx.Resolve<IMvxViewPresenter>() as MvxFormsWindowsUWPPagePresenter;
+
+            LoadApplication(presenter.MvxFormsApp);
         }
     }
 }
